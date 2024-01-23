@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Assignment.Models.KhachHang>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tên Khách Hàng
+            </th>
+            <th>
+                Số Điện Thoại
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Địa Chỉ
+            </th>
+            <th>
+                Trạng Thái
+            </th>
+            <th>
+                Thao Tác
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenKhachHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IDKhachHang">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IDKhachHang">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IDKhachHang">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

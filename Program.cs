@@ -1,4 +1,8 @@
+using Assignment.IResponsitories;
+using Assignment.IServices;
 using Assignment.Models;
+using Assignment.Responsitories;
+using Assignment.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +13,10 @@ builder.Services.AddDbContext<Context>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("SQL"));
 });
+
+builder.Services.AddScoped<IKhachHangRes, KhachHangRes>();
+builder.Services.AddScoped<IKhachHangSer, KhachHangSer>();
+
 
 var app = builder.Build();
 
